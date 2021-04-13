@@ -29,17 +29,22 @@ namespace View
         {
             // fetch input textBox
             string input = textBox.Text;
-            Console.WriteLine(input);
             // parse fetched string to double
             double val = double.Parse(input);
-            Console.WriteLine(val);
             // formula for °F to °C
             double valC = (val - 32) * 0.5556;
-            Console.WriteLine(valC);
             // parse double to string
             string output = valC.ToString();
             // show value in textBox
             textBox.Text = output;
+        }
+
+        private void ConvertToFahrenheit(object sender, RoutedEventArgs e)
+        {
+            var input = textBox.Text;
+            var val = double.Parse(input);
+            var valF = val * 1.8 + 32;
+            textBox.Text = valF.ToString();
         }
     }
 }

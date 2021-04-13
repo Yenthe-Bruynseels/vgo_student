@@ -25,26 +25,42 @@ namespace View
             InitializeComponent();
         }
 
-        private void ConvertToCelsius(object sender, RoutedEventArgs e)
+        private void ConvertFahrenheit(object sender, RoutedEventArgs e)
         {
             // fetch input textBox
-            string input = textBoxFahrenheit.Text;
+            var input = textBoxFahrenheit.Text;
             // parse fetched string to double
-            double val = double.Parse(input);
+            var val = double.Parse(input);
             // formula for °F to °C
-            double valC = (val - 32) * 0.5556;
+            var valC = (val - 32) * 0.5556;
+            //formula for °F to °K
+            var valK = valC + 273.15;
             // parse double to string
-            string output = valC.ToString();
+            var outputC = valC.ToString();
+            var outputK = valK.ToString(); 
             // show value in textBox
-            textBoxCelsius.Text = output;
+            textBoxCelsius.Text = outputC;
+            textBoxKelvin.Text = outputK;
         }
 
-        private void ConvertToFahrenheit(object sender, RoutedEventArgs e)
+        private void ConvertCelsius(object sender, RoutedEventArgs e)
         {
             var input = textBoxCelsius.Text;
             var val = double.Parse(input);
             var valF = val * 1.8 + 32;
+            var valK = val + 273.15;
             textBoxFahrenheit.Text = valF.ToString();
+            textBoxKelvin.Text = valK.ToString();
+        }
+
+        private void ConvertKelvin(object sender, RoutedEventArgs e)
+        {
+            var input = textBoxKelvin.Text;
+            var val = double.Parse(input);
+            var valC = val - 273.15;
+            var valF = valC * 1.8 + 32;
+            textBoxFahrenheit.Text = valF.ToString();
+            textBoxCelsius.Text = valC.ToString();
         }
     }
 }

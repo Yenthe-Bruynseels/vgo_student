@@ -9,9 +9,9 @@
     <StackPanel>
         <TextBlock Text="Fahrenheit" FontWeight="Bold" Padding="2" FontSize="16">
             <TextBlock.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="Gray" Offset="0"/>
-                    <GradientStop Color="White" Offset="1"/>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="cyan" Offset="0"/>
+                    <GradientStop Color="blue" Offset="1"/>
                 </LinearGradientBrush>
             </TextBlock.Background>
         </TextBlock>
@@ -23,8 +23,8 @@
         <TextBlock Text="Celsius" FontWeight="Bold" Padding="2" FontSize="16">
             <TextBlock.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="Gray" Offset="0"/>
-                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="cyan" Offset="0"/>
+                    <GradientStop Color="blue" Offset="1"/>
                 </LinearGradientBrush>
             </TextBlock.Background>
         </TextBlock>

@@ -28,7 +28,7 @@ namespace View
         private void ConvertToCelsius(object sender, RoutedEventArgs e)
         {
             // fetch input textBox
-            string input = textBox.Text;
+            string input = textBoxFahrenheit.Text;
             // parse fetched string to double
             double val = double.Parse(input);
             // formula for °F to °C
@@ -36,15 +36,15 @@ namespace View
             // parse double to string
             string output = valC.ToString();
             // show value in textBox
-            textBox.Text = output;
+            textBoxCelsius.Text = output;
         }
 
         private void ConvertToFahrenheit(object sender, RoutedEventArgs e)
         {
-            var input = textBox.Text;
+            var input = textBoxCelsius.Text;
             var val = double.Parse(input);
             var valF = val * 1.8 + 32;
-            textBox.Text = valF.ToString();
+            textBoxFahrenheit.Text = valF.ToString();
         }
     }
 }

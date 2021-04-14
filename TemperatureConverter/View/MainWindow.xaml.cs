@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,8 +31,26 @@ namespace View
             var valueK = slider.Value;
             var valueC = valueK - 273.15;
             var valueF = valueC * 1.8 + 32;
-            textBoxCelsius.Text = valueC.ToString();
             textBoxFahrenheit.Text = valueF.ToString();
         }
     }
+
+    public class CelsiusConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        var kelvin = (double)value;
+        var celsius = kelvin - 273.15;
+
+        return celsius.ToString();
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        var celsius = double.Parse((string) value);
+        var kelvin = celsius + 273.15;
+
+        return kelvin;
+    }
+}
 }

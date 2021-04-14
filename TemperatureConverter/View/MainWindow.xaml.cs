@@ -59,7 +59,7 @@ namespace View
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var fahrenheit = double.Parse((string)value);
-            var kelvin = (fahrenheit-32) / 1.8 + 273.15;
+            var kelvin = (fahrenheit + 459.67) / 1.8;
 
             return kelvin;
         }

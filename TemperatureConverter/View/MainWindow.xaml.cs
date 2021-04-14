@@ -30,7 +30,6 @@ namespace View
             var valueK = slider.Value;
             var valueC = valueK - 273.15;
             var valueF = valueC * 1.8 + 32;
-            textBoxKelvin.Text = valueK.ToString();
             textBoxCelsius.Text = valueC.ToString();
             textBoxFahrenheit.Text = valueF.ToString();
         }

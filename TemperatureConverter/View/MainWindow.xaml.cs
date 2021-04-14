@@ -25,14 +25,6 @@ namespace View
         {
             InitializeComponent();
         }
-
-        private void SliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            var valueK = slider.Value;
-            var valueC = valueK - 273.15;
-            var valueF = valueC * 1.8 + 32;
-            textBoxFahrenheit.Text = valueF.ToString();
-        }
     }
 
     public class CelsiusConverter : IValueConverter
@@ -42,7 +34,7 @@ namespace View
         var kelvin = (double)value;
         var celsius = kelvin - 273.15;
 
-        return celsius.ToString();
+        return celsius;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -53,4 +45,23 @@ namespace View
         return kelvin;
     }
 }
+
+    public class FahrenheitConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var kelvin = (double)value;
+            var fahrenheit = (kelvin - 273.15) * 1.8 + 32;
+
+            return fahrenheit;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var fahrenheit = double.Parse((string)value);
+            var kelvin = (fahrenheit-32) / 1.8 + 273.15;
+
+            return kelvin;
+        }
+    }
 }

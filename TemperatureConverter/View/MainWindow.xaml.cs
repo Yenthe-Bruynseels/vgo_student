@@ -51,7 +51,7 @@ namespace View
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var kelvin = (double)value;
-            var fahrenheit = (kelvin - 273.15) * 1.8 + 32;
+            var fahrenheit = kelvin * 1.8 - 459.67;
 
             return fahrenheit;
         }

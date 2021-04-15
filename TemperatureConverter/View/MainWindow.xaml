@@ -47,6 +47,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <Slider x:Name="slider" Minimum="0" Maximum="1000" Value="{Binding Path=TemperatureInKelvin}" ></Slider>
+        <Slider x:Name="slider" Minimum="0" Maximum="1000" Value="{Binding Path=TemperatureInKelvin.Value}" />
     </StackPanel>
 </Window>

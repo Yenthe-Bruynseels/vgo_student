@@ -1,17 +1,12 @@
-﻿using Model;
-using System;
+﻿using Cell;
+using Model;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    public class ConverterViewModel : INotifyPropertyChanged
+    public class ConverterViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public ConverterViewModel()
         {
             this.Kelvin = new TemperatureScaleViewModel(this, new KelvinTemperatureScale());
@@ -19,8 +14,8 @@ namespace ViewModel
             this.Fahrenheit = new TemperatureScaleViewModel(this, new FahrenheitTemperatureScale());
         }
 
-        private double temperatureInKelvin;
-        public double TemperatureInKelvin
+        private Cell<double> temperatureInKelvin;
+        public Cell<double> TemperatureInKelvin
         {
             get
             {
@@ -28,10 +23,7 @@ namespace ViewModel
             }
             set
             {
-                temperatureInKelvin = value;
-
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TemperatureInKelvin)));
-            }
+                temperatureInKelvin = value;            }
         }
 
         public TemperatureScaleViewModel Kelvin { get; }
@@ -58,7 +50,7 @@ namespace ViewModel
             this.parent = parent;
             this.temperatureScale = temperatureScale;
 
-            this.parent.PropertyChanged += (sender, args) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Temperature)));
+            this.parent.TemperatureInKelvin.PropertyChanged += (sender, args) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Temperature)));
         }
 
         public string Name => temperatureScale.Name;
@@ -67,11 +59,11 @@ namespace ViewModel
         {
             get
             {
-                return temperatureScale.ConvertFromKelvin(parent.TemperatureInKelvin);
+                return temperatureScale.ConvertFromKelvin(parent.TemperatureInKelvin.Value);
             }
             set
             {
-                parent.TemperatureInKelvin = temperatureScale.ConvertToKelvin(value);
+                parent.TemperatureInKelvin.Value = temperatureScale.ConvertToKelvin(value);
             }
         }
 

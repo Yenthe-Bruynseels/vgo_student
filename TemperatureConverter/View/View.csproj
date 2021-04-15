@@ -94,6 +94,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Cell\Cell.csproj">
+      <Project>{d0a1b689-e69a-4ecc-90d7-4f70a6d3b4bd}</Project>
+      <Name>Cell</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{f66953a9-0be9-445f-8f30-6a5bb7f35662}</Project>
       <Name>ViewModel</Name>

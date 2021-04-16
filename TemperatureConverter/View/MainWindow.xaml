@@ -51,7 +51,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Button Grid.Column="0" Content="-" Height="32"></Button>
+                            <Button Grid.Column="0" Content="-" Height="32" Command="{Binding Decrement}"></Button>
                             <TextBox Grid.Column="1" Style="{StaticResource textStyle}" Text="{Binding Path=Temperature.Value, UpdateSourceTrigger=PropertyChanged}" />
                             <Button Grid.Column="2" Content="+" Height="32" Command="{Binding Increment}"></Button>
                         </Grid>

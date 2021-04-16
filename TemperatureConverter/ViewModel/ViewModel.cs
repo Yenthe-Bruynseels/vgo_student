@@ -89,7 +89,7 @@ namespace ViewModel
         {
             var newValue = cell.Value + delta;
 
-            return minimum < newValue || maximum > newValue;
+            return minimum <= newValue && newValue <= maximum;
         }
 
         public void Execute(object parameter)

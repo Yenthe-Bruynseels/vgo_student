@@ -1,7 +1,9 @@
 ﻿using Cell;
 using Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace ViewModel
 {
@@ -43,12 +45,37 @@ namespace ViewModel
         {
             this.parent = parent;
             this.temperatureScale = temperatureScale;
-
             this.Temperature = this.parent.TemperatureInKelvin.Derive(kelvin => temperatureScale.ConvertFromKelvin(kelvin), t => temperatureScale.ConvertToKelvin(t));
+            this.Increment = new AddCommand(this.Temperature);
         }
 
         public string Name => temperatureScale.Name;
 
         public Cell<double> Temperature { get; }
+
+        public ICommand Increment { get; }
+    }
+
+    public class AddCommand : ICommand
+    {
+        private readonly Cell<double> cell;
+
+        public AddCommand(Cell<double> cell)
+        {
+            this.cell = cell;
+        }
+
+
+        public event EventHandler CanExecuteChanged;
+
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public void Execute(object parameter)
+        {
+            cell.Value = Math.Round(cell.Value + 1);
+        }
     }
 }
